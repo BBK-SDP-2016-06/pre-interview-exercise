@@ -1,7 +1,6 @@
-import org.junit.platform.commons.util.CollectionUtils;
-
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 public class ShoppingCart {
 
@@ -11,6 +10,7 @@ public class ShoppingCart {
         }
         else {
             return items.stream()
+                    .filter(Objects::nonNull)
                     .map(Fruit::GetPrice)
                     .reduce(new BigDecimal("0"), BigDecimal::add);
         }
