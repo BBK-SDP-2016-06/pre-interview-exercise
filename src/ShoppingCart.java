@@ -8,23 +8,28 @@ import java.util.stream.Collectors;
 
 public class ShoppingCart {
 
-    public BigDecimal Checkout(List<Fruit> items) {
+    public BigDecimal Checkout(List<Fruit> items, Offer... offers) {
         if (items == null) {
             return new BigDecimal("0");
         }
         else {
-            return items.stream()
+            BigDecimal basePrice = items.stream()
                     .filter(Objects::nonNull)
                     .map(Fruit::GetPrice)
                     .reduce(new BigDecimal("0"), BigDecimal::add);
+
+            for (Offer offer: offers) {
+                basePrice = basePrice.subtract(offer.GetPriceDiscount(items));
+            }
+            return basePrice;
         }
     }
 
-    public BigDecimal Checkout(String[] items) {
+    public BigDecimal Checkout(String[] items, Offer... offers) {
         List<Fruit> fruitItems = Arrays.stream(items)
                 .map(this::convertToFruit)
                 .collect(Collectors.toList());
-        return Checkout(fruitItems);
+        return Checkout(fruitItems, offers);
     }
 
     private Fruit convertToFruit(String item) {
