@@ -106,4 +106,24 @@ public class ShoppingCartTests {
         };
         assertEquals(new BigDecimal("0.60"), shoppingCart.Checkout(items, offers));
     }
+
+    @Test
+    public void testShoppingCartWithOffers4() {
+        String[] items = new String[] {"Apple", "Orange", "Apple", "Orange", "Orange", "Apple", "Orange", "Orange"};
+        Offer[] offers = new Offer[] {
+                CurrentOffers.BuyOneGetOneFree(new Apple()),
+                CurrentOffers.ThreeForThePriceOfTwo(new Orange())
+        };
+        assertEquals(new BigDecimal("2.20"), shoppingCart.Checkout(items, offers));
+    }
+
+    @Test
+    public void testShoppingCartWithOffers5() {
+        String[] items = new String[] {};
+        Offer[] offers = new Offer[] {
+                CurrentOffers.BuyOneGetOneFree(new Apple()),
+                CurrentOffers.ThreeForThePriceOfTwo(new Orange())
+        };
+        assertEquals(new BigDecimal("0.00"), shoppingCart.Checkout(items, offers));
+    }
 }
