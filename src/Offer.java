@@ -3,5 +3,5 @@ import java.util.List;
 
 @FunctionalInterface
 public interface Offer {
-    BigDecimal GetPriceDiscount(Fruit fruit, List<Fruit> items);
+    BigDecimal GetPriceDiscount(List<Fruit> items);
 }
