@@ -24,4 +24,10 @@ public class ShoppingCartTests {
         items.add(new Apple());
         assertEquals(new BigDecimal("2.05"), shoppingCart.Checkout(items));
     }
+
+    @Test
+    public void testShoppingCartWithNullItems() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        assertEquals(new BigDecimal("0"), shoppingCart.Checkout(null));
+    }
 }
