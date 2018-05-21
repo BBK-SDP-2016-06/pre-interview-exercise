@@ -4,6 +4,8 @@ import java.util.List;
 public class ShoppingCart {
 
     public BigDecimal Checkout(List<Fruit> items) {
-        return new BigDecimal("0");
+        return items.stream()
+                .map(Fruit::GetPrice)
+                .reduce(new BigDecimal("0"), BigDecimal::add);
     }
 }
