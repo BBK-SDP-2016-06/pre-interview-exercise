@@ -70,4 +70,11 @@ public class ShoppingCartTests {
         assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items));
     }
 
+    @Test
+    public void testShoppingCartWithUpperCaseName() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        String[] items = new String[] {"APPLE", "ORANGE"};
+        assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items));
+    }
+
 }
