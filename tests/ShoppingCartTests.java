@@ -77,4 +77,15 @@ public class ShoppingCartTests {
         assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items));
     }
 
+    @Test
+    public void testShoppingCartWithOffers() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        String[] items = new String[] {"Apple", "Orange", "Apple"};
+        Offer[] offers = new Offer[] {
+                CurrentOffers.BuyOneGetOneFree(new Apple()),
+                CurrentOffers.ThreeForThePriceOfTwo(new Orange())
+        };
+        assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items, offers));
+    }
+
 }
