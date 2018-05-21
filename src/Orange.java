@@ -4,6 +4,6 @@ public class Orange implements Fruit {
 
     @Override
     public BigDecimal GetPrice() {
-        return null;
+        return new BigDecimal("0.25");
     }
 }
