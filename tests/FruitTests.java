@@ -7,6 +7,12 @@ public class FruitTests {
     @Test
     public void testApplePrice() {
         Apple apple = new Apple();
-        assertEquals(apple.GetPrice(), new BigDecimal("0.60"));
+        assertEquals(new BigDecimal("0.60"), apple.GetPrice());
+    }
+
+    @Test
+    public void testOrangePrice() {
+        Orange orange = new Orange();
+        assertEquals(new BigDecimal("0.25"), orange.GetPrice());
     }
 }
