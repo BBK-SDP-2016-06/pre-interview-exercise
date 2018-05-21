@@ -4,7 +4,7 @@ public class Apple implements Fruit {
 
     @Override
     public BigDecimal GetPrice() {
-        return null;
+        return new BigDecimal("0.60");
     }
 
 }
