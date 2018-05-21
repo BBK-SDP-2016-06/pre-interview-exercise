@@ -24,12 +24,13 @@ public class ShoppingCartTests {
         items.add(new Apple());
         assertEquals(new BigDecimal("2.05"), shoppingCart.Checkout(items));
     }
-
+/*
     @Test
     public void testShoppingCartWithNullItems() {
         ShoppingCart shoppingCart = new ShoppingCart();
         assertEquals(new BigDecimal("0"), shoppingCart.Checkout(null));
     }
+    */
 
     @Test
     public void testShoppingCartWithSomeNullItems() {
@@ -47,4 +48,26 @@ public class ShoppingCartTests {
         String[] items = new String[] {"Apple", "Apple", "Orange", "Apple"};
         assertEquals(new BigDecimal("2.05"), shoppingCart.Checkout(items));
     }
+
+    @Test
+    public void testShoppingCartWithStringItems2() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        String[] items = new String[] {"Apple", "Apple"};
+        assertEquals(new BigDecimal("1.20"), shoppingCart.Checkout(items));
+    }
+
+    @Test
+    public void testShoppingCartWithIncorrectStringName() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        String[] items = new String[] {"Apple", "Apple", "Plum"};
+        assertEquals(new BigDecimal("1.20"), shoppingCart.Checkout(items));
+    }
+
+    @Test
+    public void testShoppingCartWithLowerCaseName() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        String[] items = new String[] {"apple", "orange"};
+        assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items));
+    }
+
 }
