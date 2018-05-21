@@ -40,4 +40,15 @@ public class ShoppingCartTests {
         items.add(new Orange());
         assertEquals(new BigDecimal("0.85"), shoppingCart.Checkout(items));
     }
+
+    @Test
+    public void testShoppingCartWithStringItems() {
+        ShoppingCart shoppingCart = new ShoppingCart();
+        List<String> items = new ArrayList<>();
+        items.add("Apple");
+        items.add("Apple");
+        items.add("Orange");
+        items.add("Apple");
+        assertEquals(new BigDecimal("2.05"), shoppingCart.Checkout(items));
+    }
 }
